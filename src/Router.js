@@ -1,18 +1,22 @@
-import React, {Component} from 'react';
+import firebase from 'firebase';
+import React, { Component } from 'react';
+import { Actions } from 'react-native-router-flux';
 import { Scene, Router } from 'react-native-router-flux';
+
 import LoginForm from './components/LoginForm.js';
 import LogoutForm from './components/LogoutForm.js';
 import EmployeeList from './components/EmployeeList.js';
+
 import EmployeeCreateForm from './components/EmployeeCreate.js';
-import {Actions} from 'react-native-router-flux';
 import EmployeeEdit from './components/EmployeeEdit';
+
 import {Confirm} from './components/common';
-import firebase from 'firebase';
 
 class RouterComponent extends Component {
+
   state = {showModal:false};
 
-  onAccept(){
+  onAccept() {
     this.setState({showModal:false});
     firebase.auth().signOut();
     Actions.auth();
@@ -23,7 +27,9 @@ class RouterComponent extends Component {
   }
 
   onLogoutClick(){
+
     this.setState({showModal:true});
+
     return(
       <Confirm
         visible={this.state.showModal}
@@ -45,6 +51,7 @@ render() {
           <Scene key="login" component={ LoginForm } title="Please Login" initial />
           <Scene key="logout" component={ LogoutForm } title="Please Logout" leftTitle="Back" onLeft={()=> Actions.main() } />
         </Scene>
+
         <Scene style={styles.TextStyle} key="main" leftTitle="Logout" onLeft={()=> Actions.logout() }>
           <Scene
             initial
@@ -54,18 +61,21 @@ render() {
             component={ EmployeeList }
             title="Employees"
           />
+
           <Scene
             leftTitle='' onLeft={()=> console.log('pennis') }
             key="employeeCreate"
             component={ EmployeeCreateForm }
             title="Create Employee"
           />
+
           <Scene
             leftTitle='' onLeft={()=> console.log('pennis') }
             key="employeeEdit"
             component={ EmployeeEdit }
             title="Edit Employee"
           />
+
         </Scene>
       </Scene>
     </Router>
