@@ -67,11 +67,11 @@ export const employeesSave = ({name,phone,shift, uid}) => {
 
 export const employeeDelete =({uid}) => {
   const {currentUser} = firebase.auth();
-return() =>{
+return(dispatch) =>{
   firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
     .remove()
     .then(()=>{
-      // dispatch({type:EMPLOYEE_DELETE});
+      dispatch({type:EMPLOYEE_DELETE});
       Actions.main({type:'reset'});
     });
 

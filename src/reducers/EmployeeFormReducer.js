@@ -27,9 +27,9 @@ export default (state=INITIAL_STATE, action) =>{
     // once we create an employee reset the fields.
       return INITIAL_STATE;
 
-    // case EMPLOYEE_DELETE:
-    // // once we create an employee reset the fields.
-    //   return INITIAL_STATE;
+    case EMPLOYEE_DELETE:
+    // once we create an employee reset the fields.
+      return INITIAL_STATE;
 // clear the fields afte we delete them
 
     default:
