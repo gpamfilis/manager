@@ -28,7 +28,9 @@ const styles = {
   titleStyle:{
     fontSize:18,
     paddingLeft:15,
-    justifyContent:'center'
+    // justifyContent:'center',
+    // alignSelf:'center',
+    // textAlign:'center'
   }
 };
 

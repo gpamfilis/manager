@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Picker,Text} from 'react-native';
+import {View, Picker, Text} from 'react-native';
 import {CardSection, Input} from './common';
 import {connect} from 'react-redux';
 import {employeeUpdate} from '../actions';

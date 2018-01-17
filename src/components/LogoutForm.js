@@ -9,6 +9,7 @@ import { Actions } from 'react-native-router-flux';
 class LogoutForm extends Component {
 
   onLogoutPress(){
+    console.log('Logout Button Pressed.');
     firebase.auth().signOut();
     Actions.auth();
   }

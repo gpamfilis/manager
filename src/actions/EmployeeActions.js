@@ -3,12 +3,13 @@ import {
   EMPLOYEE_UPDATE,
   EMPLOYEE_CREATE,
   EMPLOYEES_FETCH_SUCCESS,
-  EMPLOYEE_SAVE_SUCCESS
+  EMPLOYEE_SAVE_SUCCESS,
+  EMPLOYEE_DELETE
 } from './types';
 import {Actions} from 'react-native-router-flux';
 import firebase from 'firebase';
 
-export const employeeUpdate = ({ prop,value }) => {
+export const employeeUpdate = ({ prop, value }) => {
   return {
     type: EMPLOYEE_UPDATE,
     payload: { prop, value }
@@ -23,7 +24,7 @@ export const employeeCreate = ({ name, phone, shift}) => {
   return (dispatch) => {
 
     firebase.database().ref(`/users/${currentUser.uid}/employees`)
-      .push({name,phone,shift})
+      .push({name, phone, shift})
       .then(() => {
         dispatch({type:EMPLOYEE_CREATE});
         Actions.main({type:'reset'})
@@ -70,6 +71,7 @@ return() =>{
   firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
     .remove()
     .then(()=>{
+      // dispatch({type:EMPLOYEE_DELETE});
       Actions.main({type:'reset'});
     });
 
